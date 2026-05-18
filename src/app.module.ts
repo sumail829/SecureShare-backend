@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { FilesModule } from './files/files.module';
 import { SharesModule } from './shares/shares.module';
 import { PermissionsModule } from './permissions/permissions.module';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -32,7 +33,9 @@ FilesModule,
 
 SharesModule,
 
-PermissionsModule
+PermissionsModule,
+
+AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
