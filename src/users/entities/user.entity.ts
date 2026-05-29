@@ -1,18 +1,24 @@
-import { Entity,PrimaryColumn,Column,CreateDateColumn,OneToMany } from "typeorm";
-
-
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  CreateDateColumn,
+  OneToMany,
+} from 'typeorm';
+import { File } from '../../files/entities/file.entity';
 
 @Entity('users')
 export class User {
+  @PrimaryColumn('uuid')
+  id: string; // Supabase UUID
 
-@PrimaryColumn('uuid')
-id:string;
+  @Column({ unique: true })
+  email: string;
 
-@Column({unique:true})
-email:string;
+  @CreateDateColumn()
+  created_at: Date;
 
-@CreateDateColumn()
-created_at:Date;
-
+  // Relations
+  @OneToMany(() => File, (file) => file.owner)
+  files: File[];
 }
-
